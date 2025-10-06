@@ -214,17 +214,18 @@ const Hero = () => {
                   />
                 ))}
               </motion.div>
-              <div className="mx-auto w-full max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl rounded-xl sm:rounded-2xl relative z-10 shadow-xl sm:shadow-2xl bg-white p-4 sm:p-6">
-                <div className="aspect-video w-full bg-gradient-to-br from-sky-50 to-purple-50 rounded-lg overflow-hidden">
+              <div className="hidden sm:block mx-auto w-full max-w-lg sm:max-w-3xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-8xl rounded-xl sm:rounded-2xl relative z-10 shadow-xl sm:shadow-2xl bg-white p-2 sm:p-3 md:p-4 lg:p-6">
                   <img
                     src={DashboardView}
                     alt="Dashboard de CuidApp - Vista previa de la aplicación"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain p-2"
                   />
-                </div>
-                <div className="text-center mt-4">
-                  <p className="text-sm font-medium text-purple-600">
+                <div className="text-center mt-3 sm:mt-4">
+                  <p className="text-sm sm:text-base font-medium text-purple-600">
                     Dashboard de CuidApp
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                    Gestión integral de cuidados médicos
                   </p>
                 </div>
               </div>
