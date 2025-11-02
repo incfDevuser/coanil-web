@@ -1,26 +1,26 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
-import TiposUsuario from "./components/TiposUsuario";
-import Caracteristicas from "./components/Caracteristicas";
-import Testimonios from "./components/Testimonios";
-import CTA from "./components/CTA";
-import Precios from "./components/Precios";
+
+//Páginas
+import HomePage from "./pages/HomePage";
+import CuidadorasPage from "./pages/CuidadorasPage";
+import EspecialistasPage from "./pages/EspecialistasPage";
+import AdminPage from "./pages/AdminPage";
+import PacientePage from "./pages/PacientePage";
+
 function App() {
   return (
     <div className="min-h-screen">
       <NavBar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Hero />
-        <TiposUsuario />
-        <Caracteristicas />
-        <Testimonios />
-        <Precios />
-        <CTA />
-        {/* Secciones */}
-        <div className="my-20">{/* Otra seccion */}</div>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cuidadoras" element={<CuidadorasPage />} />
+        <Route path="/especialistas" element={<EspecialistasPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/pacientes" element={<PacientePage />} />
+      </Routes>
       <Footer />
     </div>
   );

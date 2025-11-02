@@ -1,19 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import cuidaAppLogo from "../assets/imgs/app/CuidApp.png";
+
 const links = [
-  { to: "#funcionalidades", label: "Funcionalidades", type: "anchor" },
+  { 
+    to: "#funcionalidades", 
+    label: "Funcionalidades", 
+    type: "dropdown",
+    submenu: [
+      { to: "/pacientes", label: "Pacientes", type: "route" },
+      { to: "/cuidadoras", label: "Cuidadoras", type: "route" },
+      { to: "/especialistas", label: "Especialistas", type: "route" },
+      { to: "/admin", label: "Administradores", type: "route" },
+    ]
+  },
   { to: "#testimonios", label: "Testimonios", type: "anchor" },
   { to: "#tipos-usuario", label: "Especialidades", type: "anchor" },
   { to: "#precios", label: "Precios", type: "anchor" },
 ];
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const wrapRef = useRef(null);
   const navRef = useRef(null);
   const logoRef = useRef(null);
   const ctaRef = useRef(null);
 
   const [open, setOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia(
@@ -67,10 +81,28 @@ const NavBar = () => {
     const id = to.split("#")[1];
     if (!id) return;
     e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    // Si no estamos en la página principal, navegar primero
+    if (window.location.hash !== "#/" && window.location.hash !== "") {
+      navigate("/");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    
     window.history.replaceState(null, "", `#${id}`);
     setOpen(false);
+    setDropdownOpen(false);
+  };
+
+  const handleRouteClick = (to) => {
+    navigate(to);
+    setOpen(false);
+    setDropdownOpen(false);
   };
 
   useEffect(() => {
@@ -97,6 +129,17 @@ const NavBar = () => {
     };
   }, [open]);
 
+  // Cerrar dropdown al hacer click fuera
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownOpen && !e.target.closest('.dropdown-container')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [dropdownOpen]);
+
   return (
     <div className="sticky top-0 z-50">
       <div
@@ -115,13 +158,11 @@ const NavBar = () => {
           }}
         >
           <div className="h-full flex items-center justify-between">
-            <a
-              href="#hero"
+            <Link
+              to="/"
               className="flex items-center gap-3"
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
-                window.history.replaceState(null, "", "/");
                 setOpen(false);
               }}
             >
@@ -135,17 +176,49 @@ const NavBar = () => {
                   Cuidapp
                 </span>
               </div>
-            </a>
-            <div className="hidden lg:flex gap-11 font-medium">
+            </Link>
+            <div className="hidden lg:flex gap-11 font-medium items-center">
               {links.map((link) => (
-                <a
-                  key={link.to}
-                  href={link.to}
-                  onClick={(e) => handleAnchor(e, link.to)}
-                  className="relative transition-colors text-slate-600 hover:text-purple-700 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-purple-600 after:origin-left after:transition-transform hover:after:scale-x-100"
-                >
-                  {link.label}
-                </a>
+                link.type === "dropdown" ? (
+                  <div key={link.to} className="relative dropdown-container">
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className="relative transition-colors text-slate-600 hover:text-purple-700 flex items-center gap-1"
+                    >
+                      {link.label}
+                      <svg 
+                        className={`w-4 h-4 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {dropdownOpen && (
+                      <div className="absolute top-full left-0 mt-2 w-56 rounded-xl bg-white shadow-xl border border-gray-200 py-2 z-50">
+                        {link.submenu.map((item) => (
+                          <button
+                            key={item.to}
+                            onClick={() => handleRouteClick(item.to)}
+                            className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    key={link.to}
+                    href={link.to}
+                    onClick={(e) => handleAnchor(e, link.to)}
+                    className="relative transition-colors text-slate-600 hover:text-purple-700 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-purple-600 after:origin-left after:transition-transform hover:after:scale-x-100"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
             </div>
             <a
@@ -211,14 +284,31 @@ const NavBar = () => {
           >
             <div className="flex flex-col py-2">
               {links.map((link) => (
-                <a
-                  key={link.to}
-                  href={link.to}
-                  onClick={(e) => handleAnchor(e, link.to)}
-                  className="px-4 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 transition"
-                >
-                  {link.label}
-                </a>
+                link.type === "dropdown" ? (
+                  <div key={link.to}>
+                    <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                      {link.label}
+                    </div>
+                    {link.submenu.map((item) => (
+                      <button
+                        key={item.to}
+                        onClick={() => handleRouteClick(item.to)}
+                        className="w-full text-left px-4 py-3 pl-8 text-base font-medium text-gray-800 hover:bg-gray-50 transition"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <a
+                    key={link.to}
+                    href={link.to}
+                    onClick={(e) => handleAnchor(e, link.to)}
+                    className="px-4 py-3 text-base font-medium text-gray-800 hover:bg-gray-50 transition"
+                  >
+                    {link.label}
+                  </a>
+                )
               ))}
               <div className="px-4 pt-2 pb-4">
                 <a
