@@ -1,339 +1,250 @@
 import React from "react";
 
+const MobileMockupSpace = ({ label }) => (
+  <div className="mx-auto w-[280px] h-[580px] bg-gray-100 rounded-[2.5rem] border-8 border-gray-800 shadow-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+    {/* Notch simulado */}
+    <div className="absolute top-0 w-32 h-6 bg-gray-800 rounded-b-xl z-10"></div>
+
+    <div className="text-center p-6">
+      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-400 text-gray-400">
+        <svg
+          className="w-8 h-8"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+      </div>
+      <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">
+        MockUp <br />
+        <span className="text-blue-600">{label}</span>
+      </p>
+    </div>
+    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none"></div>
+  </div>
+);
+
 const PacientePage = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-          Funcionalidades para Pacientes
-        </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Herramientas diseñadas para tu seguridad, comodidad y seguimiento
-          personalizado
-        </p>
+    <div className="min-h-screen bg-white font-sans">
+      <div className="bg-slate-50 border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 tracking-tight">
+            Manual del Paciente
+          </h1>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            Bienvenido a CuidApp. Sigue estos 4 pasos sencillos para configurar
+            tu cuenta y comenzar a usar la aplicación.
+          </p>
+        </div>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 mb-16">
-        <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl shadow-lg p-8 border-2 border-red-200">
-          <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4 shadow-md">
-            <svg
-              className="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-              />
-            </svg>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-block px-4 py-1 rounded-full bg-blue-100 text-blue-700 font-bold text-sm mb-4">
+              PASO 1
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Crea tu cuenta
+            </h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Para comenzar, necesitas registrarte en la plataforma. Asegúrate
+              de seleccionar la opción correcta para que podamos configurar tus
+              herramientas.
+            </p>
+            <ul className="space-y-4">
+              <li className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                  1
+                </div>
+                <p className="text-slate-700">
+                  Abre la app y presiona <strong>"Registrarse"</strong>.
+                </p>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                  2
+                </div>
+                <p className="text-slate-700">
+                  Selecciona el rol <strong>"Paciente"</strong>.
+                </p>
+              </li>
+              <li className="flex gap-4">
+                <div className="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold shrink-0">
+                  3
+                </div>
+                <p className="text-slate-700">
+                  Completa tus datos personales (Nombre, RUT, Correo) y crea una
+                  contraseña.
+                </p>
+              </li>
+            </ul>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Botón de Pánico
-          </h3>
-          <p className="text-gray-700 mb-4">
-            Acceso inmediato a ayuda de emergencia con un solo toque. Alerta
-            automática a tus cuidadoras, familiares y servicios de emergencia.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-              <svg
-                className="w-3 h-3 mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Respuesta inmediata
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-              <svg
-                className="w-3 h-3 mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              Llamada automática
-            </span>
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-200 text-red-800">
-              <svg
-                className="w-3 h-3 mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Ubicación GPS
-            </span>
-          </div>
+          <MobileMockupSpace label="Pantalla de Registro" />
         </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <svg
-              className="w-6 h-6 text-purple-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-              />
-            </svg>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <MobileMockupSpace label="Modal Unirse a Centro" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Mis Actividades
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Visualiza tu agenda diaria con actividades programadas,
-            medicamentos, terapias y ejercicios recomendados por tus
-            especialistas.
-          </p>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-purple-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Recordatorios de medicamentos
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-purple-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Horarios de terapias
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-purple-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Citas médicas próximas
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-purple-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Actividades recreativas
-            </li>
-          </ul>
-        </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <svg
-              className="w-6 h-6 text-blue-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-          </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Mis Cuidadoras
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Conoce al equipo de profesionales dedicados a tu cuidado. Accede a
-            sus perfiles, horarios y contacto directo.
-          </p>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-              <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center">
+          <div className="order-1 md:order-2">
+            <div className="inline-block px-4 py-1 rounded-full bg-teal-100 text-teal-700 font-bold text-sm mb-4">
+              PASO 2
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Únete a tu Centro
+            </h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Una vez dentro, verás que no perteneces a ningún centro. Debes
+              vincularte para que tus enfermeras puedan recibir tus alertas.
+            </p>
+            <div className="bg-teal-50 p-6 rounded-2xl border border-teal-100">
+              <h4 className="font-bold text-teal-900 mb-2 flex items-center gap-2">
                 <svg
-                  className="w-5 h-5 text-blue-700"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
                   <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
                   />
                 </svg>
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-gray-900">
-                  Ver perfiles completos
-                </p>
-                <p className="text-xs text-gray-600">
-                  Experiencia, certificaciones
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-              <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-blue-700"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-gray-900">
-                  Contacto directo
-                </p>
-                <p className="text-xs text-gray-600">
-                  Chat y llamadas integradas
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-              <div className="w-10 h-10 bg-blue-200 rounded-full flex items-center justify-center">
-                <svg
-                  className="w-5 h-5 text-blue-700"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold text-gray-900">
-                  Horarios de turnos
-                </p>
-                <p className="text-xs text-gray-600">Quién está a cargo hoy</p>
-              </div>
+                El Código de Acceso
+              </h4>
+              <p className="text-teal-800 text-sm mb-4">
+                Tu administrador o enfermera te entregará un código único de 6
+                caracteres.
+              </p>
+              <ol className="list-decimal list-inside space-y-2 text-teal-800 text-sm font-medium">
+                <li>
+                  Presiona el botón <strong>"Unirse a un centro"</strong> en el
+                  Home.
+                </li>
+                <li>
+                  Ingresa el código (ej: <code>A4F2</code>).
+                </li>
+                <li>
+                  ¡Listo! Verás el nombre de tu centro en la parte superior.
+                </li>
+              </ol>
             </div>
           </div>
         </div>
-
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <svg
-              className="w-6 h-6 text-green-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-              />
-            </svg>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-4">
+              PASO 3
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Revisa tu Agenda
+            </h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              En la pantalla principal verás una lista de tareas para hoy
+              (medicamentos, controles, etc).
+            </p>
+            <ul className="space-y-6">
+              <li className="flex gap-4 items-start">
+                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <strong className="block text-slate-900 text-lg">
+                    Pendientes (Naranja)
+                  </strong>
+                  <p className="text-slate-600 text-sm">
+                    Son las actividades que debes realizar ahora.
+                  </p>
+                </div>
+              </li>
+              <li className="flex gap-4 items-start">
+                <div className="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center shrink-0">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <strong className="block text-slate-900 text-lg">
+                    Completadas (Verde)
+                  </strong>
+                  <p className="text-slate-600 text-sm">
+                    Tareas que ya registraste o que tu cuidadora marcó como
+                    listas.
+                  </p>
+                </div>
+              </li>
+            </ul>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Mantente Conectado
-          </h3>
-          <p className="text-gray-600 mb-4">
-            Comunícate fácilmente con tu familia, especialistas y cuidadoras.
-            Comparte tu progreso y mantén a todos informados.
-          </p>
-          <ul className="space-y-2 text-sm text-gray-600">
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Videollamadas con familiares
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Mensajería instantánea
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Compartir fotos y momentos
-            </li>
-            <li className="flex items-center gap-2">
-              <svg
-                className="w-4 h-4 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Notificaciones a familiares
-            </li>
-          </ul>
+          <MobileMockupSpace label="Lista de Actividades" />
+        </div>
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="order-2 md:order-1">
+            <MobileMockupSpace label="Botón de Pánico Activo" />
+          </div>
+
+          <div className="order-1 md:order-2">
+            <div className="inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-bold text-sm mb-4 animate-pulse">
+              IMPORTANTE
+            </div>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">
+              Emergencias: Botón SOS
+            </h2>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Si te sientes mal o necesitas ayuda urgente, usa el botón rojo
+              grande en el centro de la pantalla.
+            </p>
+
+            <div className="bg-white border-l-4 border-red-500 pl-6 py-2">
+              <h4 className="font-bold text-red-600 mb-2">
+                Instrucciones de uso:
+              </h4>
+              <p className="text-slate-700 mb-4">
+                Para evitar accidentes, el botón no funciona con un toque
+                rápido.
+              </p>
+              <div className="flex items-center gap-4 text-slate-800 font-medium bg-slate-50 p-4 rounded-lg">
+                <div className="w-12 h-12 bg-white border-2 border-red-200 rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-2xl">👆</span>
+                </div>
+                <span>
+                  Mantén presionado por <strong>2 segundos</strong> hasta sentir
+                  la vibración.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
