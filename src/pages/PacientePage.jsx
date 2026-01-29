@@ -1,32 +1,46 @@
 import React from "react";
 
-const MobileMockupSpace = ({ label }) => (
-  <div className="mx-auto w-[280px] h-[580px] bg-gray-100 rounded-[2.5rem] border-8 border-gray-800 shadow-2xl flex flex-col items-center justify-center relative overflow-hidden group">
-    {/* Notch simulado */}
-    <div className="absolute top-0 w-32 h-6 bg-gray-800 rounded-b-xl z-10"></div>
+import Paso1 from "../assets/media/pacientes/paso1.MP4"
+import Paso2 from "../assets/media/pacientes/paso2.MP4"
+import Paso3 from "../assets/media/pacientes/paso3.MP4"
 
-    <div className="text-center p-6">
-      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-400 text-gray-400">
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-      </div>
-      <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">
-        MockUp <br />
-        <span className="text-blue-600">{label}</span>
-      </p>
+const MobileMockupSpace = ({ label, videoSrc }) => (
+  <div className="mx-auto w-[300px] h-[640px]  rounded-[2.5rem] shadow-2xl flex items-center justify-center relative overflow-hidden group">
+    <div className="absolute inset-6 bg-white rounded-[1.8rem] overflow-hidden flex items-center justify-center shadow-inner">
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <div className="text-center p-6">
+          <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-300 text-gray-400">
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">
+            MockUp <br />
+            <span className="text-blue-600">{label}</span>
+          </p>
+        </div>
+      )}
     </div>
-    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none"></div>
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-transparent mix-blend-overlay"></div>
   </div>
 );
 
@@ -87,11 +101,11 @@ const PacientePage = () => {
               </li>
             </ul>
           </div>
-          <MobileMockupSpace label="Pantalla de Registro" />
+          <MobileMockupSpace label="Pantalla de Registro" videoSrc={Paso1} />
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="order-2 md:order-1">
-            <MobileMockupSpace label="Modal Unirse a Centro" />
+            <MobileMockupSpace label="Modal Unirse a Centro" videoSrc={Paso2} />
           </div>
 
           <div className="order-1 md:order-2">
@@ -142,78 +156,6 @@ const PacientePage = () => {
           </div>
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <div className="inline-block px-4 py-1 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-4">
-              PASO 3
-            </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">
-              Revisa tu Agenda
-            </h2>
-            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-              En la pantalla principal verás una lista de tareas para hoy
-              (medicamentos, controles, etc).
-            </p>
-            <ul className="space-y-6">
-              <li className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <strong className="block text-slate-900 text-lg">
-                    Pendientes (Naranja)
-                  </strong>
-                  <p className="text-slate-600 text-sm">
-                    Son las actividades que debes realizar ahora.
-                  </p>
-                </div>
-              </li>
-              <li className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-xl bg-green-100 text-green-600 flex items-center justify-center shrink-0">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <strong className="block text-slate-900 text-lg">
-                    Completadas (Verde)
-                  </strong>
-                  <p className="text-slate-600 text-sm">
-                    Tareas que ya registraste o que tu cuidadora marcó como
-                    listas.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <MobileMockupSpace label="Lista de Actividades" />
-        </div>
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <MobileMockupSpace label="Botón de Pánico Activo" />
-          </div>
-
           <div className="order-1 md:order-2">
             <div className="inline-block px-4 py-1 rounded-full bg-red-100 text-red-700 font-bold text-sm mb-4 animate-pulse">
               IMPORTANTE
@@ -244,6 +186,9 @@ const PacientePage = () => {
                 </span>
               </div>
             </div>
+          </div>
+          <div className="order-2 md:order-2">
+            <MobileMockupSpace label="Lista de Actividades" videoSrc={Paso3} />
           </div>
         </div>
       </div>

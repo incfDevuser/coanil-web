@@ -1,31 +1,47 @@
 import React from "react";
 
-const MobileMockupSpace = ({ label }) => (
-  <div className="mx-auto w-[280px] h-[580px] bg-gray-100 rounded-[2.5rem] border-8 border-gray-800 shadow-2xl flex flex-col items-center justify-center relative overflow-hidden group">
-    <div className="absolute top-0 w-32 h-6 bg-gray-800 rounded-b-xl z-10"></div>
-    <div className="text-center p-6">
-      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-400 text-gray-400">
-        <svg
-          className="w-8 h-8"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-      </div>
-      <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">
-        MockUp
-        <br />
-        <span className="text-indigo-600">{label}</span>
-      </p>
+import Paso1 from "../assets/media/cuidadoras/paso1.MP4"
+import Paso2 from "../assets/media/cuidadoras/paso2.MP4"
+import Paso3 from "../assets/media/cuidadoras/paso3.MP4"
+import Paso4 from "../assets/media/cuidadoras/paso4.MP4"
+
+const MobileMockupSpace = ({ label, videoSrc }) => (
+  <div className="mx-auto w-[300px] h-[640px]  rounded-[2.5rem] shadow-2xl flex items-center justify-center relative overflow-hidden group">
+    <div className="absolute inset-6 bg-white rounded-[1.8rem] overflow-hidden flex items-center justify-center shadow-inner">
+      {videoSrc ? (
+        <video
+          src={videoSrc}
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      ) : (
+        <div className="text-center p-6">
+          <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-dashed border-gray-300 text-gray-400">
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+          <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">
+            MockUp <br />
+            <span className="text-blue-600">{label}</span>
+          </p>
+        </div>
+      )}
     </div>
-    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent pointer-events-none"></div>
+    <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-white/10 via-transparent to-transparent mix-blend-overlay"></div>
   </div>
 );
 
@@ -87,11 +103,11 @@ const CuidadorasPage = () => {
               </li>
             </ul>
           </div>
-          <MobileMockupSpace label="Pantalla de Registro" />
+          <MobileMockupSpace label="Pantalla de Registro" videoSrc={Paso1} />
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <MobileMockupSpace label="Modal Ingresar Código" />
+            <div className="order-2 md:order-1">
+            <MobileMockupSpace label="Modal Ingresar Código" videoSrc={Paso2} />
           </div>
 
           <div className="order-1 md:order-2">
@@ -186,11 +202,11 @@ const CuidadorasPage = () => {
               </li>
             </ul>
           </div>
-          <MobileMockupSpace label="Dashboard Principal" />
+          <MobileMockupSpace label="Dashboard Principal" videoSrc={Paso3} />
         </div>
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <MobileMockupSpace label="Pantalla de Alerta Activa" />
+            <div className="order-2 md:order-1">
+            <MobileMockupSpace label="Pantalla de Alerta Activa" videoSrc={Paso4} />
           </div>
 
           <div className="order-1 md:order-2">
