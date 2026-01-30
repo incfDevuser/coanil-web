@@ -13,7 +13,7 @@ const HomePage = () => {
       <TiposUsuario />
       <Caracteristicas />
       <Testimonios />
-      <Precios />
+      {/* <Precios /> */}
       <CTA />
     </div>
   );

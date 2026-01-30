@@ -100,7 +100,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <button
                 className="group relative px-8 py-4 bg-purple-600 text-white rounded-xl 
                 hover:bg-purple-700 transition-all duration-300 text-lg font-semibold 
@@ -119,7 +119,7 @@ const Hero = () => {
               >
                 Descargar Gratis
               </button>
-            </div>
+            </div> */}
 
             <div className="relative px-4 sm:px-0">
               <motion.div
@@ -230,7 +230,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="pt-4 sm:pt-6 border-t border-gray-200 max-w-xs sm:max-w-2xl mx-auto">
+            {/* <div className="pt-4 sm:pt-6 border-t border-gray-200 max-w-xs sm:max-w-2xl mx-auto">
               <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">
                 Confiado por profesionales de la salud en:
               </p>
@@ -239,7 +239,7 @@ const Hero = () => {
                   Fundacion Coanil
                 </span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
